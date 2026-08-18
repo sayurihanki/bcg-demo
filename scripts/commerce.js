@@ -667,12 +667,10 @@ export async function commerceEndpointWithQueryParams(customHeaders = {}) {
  */
 export function encodeSkuForUrl(sku) {
   const bytes = new TextEncoder().encode(sku.toLowerCase());
-  let out = '';
-  for (const b of bytes) {
+  return Array.from(bytes).map((b) => {
     const ch = String.fromCharCode(b);
-    out += /[a-z0-9-]/.test(ch) ? ch : `_${b.toString(16).padStart(2, '0')}`;
-  }
-  return out;
+    return /[a-z0-9-]/.test(ch) ? ch : `_${b.toString(16).padStart(2, '0')}`;
+  }).join('');
 }
 
 function decodeSkuFromUrl(value) {
