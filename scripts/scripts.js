@@ -222,7 +222,8 @@ async function loadEager(doc) {
 
   const main = doc.querySelector('main');
   if (main) {
-    if (document.body.classList.contains('bcg-exchange')) {
+    const isExchange = document.body.classList.contains('bcg-exchange');
+    if (isExchange) {
       decorateMain(main);
     } else {
       try {
@@ -236,13 +237,16 @@ async function loadEager(doc) {
       }
     }
     document.body.classList.add('appear');
-    await loadSection(main.querySelector('.section'), (section) => {
+    const eagerSections = isExchange
+      ? [...main.querySelectorAll(':scope > .section')].slice(0, 2)
+      : [main.querySelector('.section')];
+    await Promise.all(eagerSections.map((section) => loadSection(section, (loadedSection) => {
       // === Quick Edit first-paint guard (Demo Builder) ===
       // The Experience Workspace canvas stalls the first paint if loadSection
       // blocks on waitForFirstImage in quick-edit mode; skip the wait there.
       if (document.body.classList.contains('quick-edit')) return Promise.resolve();
-      return waitForFirstImage(section);
-    });
+      return waitForFirstImage(loadedSection);
+    })));
   }
 
   try {
