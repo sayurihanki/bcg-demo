@@ -209,8 +209,9 @@ button {
 
 .hero {
   background:
-    linear-gradient(90deg, rgb(10 16 11 / 98%) 0%, rgb(10 16 11 / 94%) 44%, rgb(10 16 11 / 55%) 100%),
-    url("https://web-assets.bcg.com/dims4/default/571f065/2147483647/strip/true/crop/2880x1512%2B0%2B54/resize/1200x630%21/format/webp/quality/90/?url=http%3A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2F96%2F4b%2F7b1b70994366b2b17d285a327092%2Fmaking-ai-productivity-pay-off-rectangle.jpg") center / cover;
+    radial-gradient(circle at 84% 38%, rgb(25 173 115 / 28%), transparent 26%),
+    radial-gradient(circle at 64% 72%, rgb(198 243 99 / 12%), transparent 31%),
+    linear-gradient(110deg, #080d09 0%, #101b13 58%, #0b2419 100%);
   color: white;
   min-height: 900px;
   overflow: hidden;
