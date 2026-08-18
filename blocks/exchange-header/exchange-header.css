@@ -2850,8 +2850,8 @@ footer {
 .pdp-hero-copy h1 {
   font-size: clamp(61px, 7.5vw, 112px);
   font-weight: 520;
-  letter-spacing: -0.078em;
-  line-height: 0.86;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
   margin: 34px 0;
   max-width: 860px;
 }
