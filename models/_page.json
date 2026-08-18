@@ -26,6 +26,12 @@
         },
         {
           "component": "text",
+          "name": "template",
+          "label": "Template",
+          "description": "Use bcg-exchange for concept pages"
+        },
+        {
+          "component": "text",
           "name": "sku",
           "label": "SKU",
           "description": "Optional: Specify a product SKU for this page"

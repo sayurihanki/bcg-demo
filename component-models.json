@@ -25,6 +25,12 @@
       },
       {
         "component": "text",
+        "name": "template",
+        "label": "Template",
+        "description": "Use bcg-exchange for concept pages"
+      },
+      {
+        "component": "text",
         "name": "sku",
         "label": "SKU",
         "description": "Optional: Specify a product SKU for this page"
@@ -406,6 +412,236 @@
     ]
   },
   {
+    "id": "exchange-header",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "brand",
+        "label": "Brand",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "navigation",
+        "label": "Navigation link or action",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-hero",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "Hero copy",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "actions",
+        "label": "Actions or signals",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-marketplace",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "identity",
+        "label": "Identity and category",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "Offer title and description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "commercials",
+        "label": "Access and price",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "action",
+        "label": "Optional badge and action",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-product-universe",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "identity",
+        "label": "Code and category",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "Product title and description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "metric",
+        "label": "Metric",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "links",
+        "label": "PDP and external links",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-enterprise",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "Copy or procurement feature",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "action",
+        "label": "Action or feature detail",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-agentic",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "intent",
+        "label": "Intent",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "agent",
+        "label": "Agent",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "recommendation",
+        "label": "Recommendation or governance",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-agenda",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "time",
+        "label": "Time",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "part",
+        "label": "Part number",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "Title and description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "speaker",
+        "label": "Speaker and duration",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-cta",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "CTA copy",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "actions",
+        "label": "Primary and secondary links",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-footer",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "brand",
+        "label": "Brand statement",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "links",
+        "label": "Footer links",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "legal",
+        "label": "Copyright and disclaimer",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-product-detail",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "identity",
+        "label": "Slug and identity",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "overview",
+        "label": "Overview or capability",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description, outcome, or deployment",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "link",
+        "label": "Link or pilot option",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
@@ -418,6 +654,60 @@
         "component": "text",
         "name": "fragmentUrlText",
         "label": "Fragment URL Text"
+      }
+    ]
+  },
+  {
+    "id": "hero-v2",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "subtitle",
+        "label": "Subtitle",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "ctaLabel",
+        "label": "CTA Label",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "ctaUrl",
+        "label": "CTA URL",
+        "valueType": "string",
+        "value": ""
       }
     ]
   },
@@ -493,94 +783,6 @@
     ]
   },
   {
-    "id": "targeted-block",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "content",
-        "label": "Content"
-      },
-      {
-        "component": "text",
-        "name": "customerGroups",
-        "label": "Customer Groups",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "customerSegments",
-        "label": "Customer Segments",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "type",
-        "label": "Type",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "fragment",
-        "label": "Fragment",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "hero-v2",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt",
-        "value": ""
-      },
-      {
-        "component": "text",
-        "name": "title",
-        "label": "Title",
-        "valueType": "string",
-        "value": ""
-      },
-      {
-        "component": "text",
-        "name": "subtitle",
-        "label": "Subtitle",
-        "valueType": "string",
-        "value": ""
-      },
-      {
-        "component": "text",
-        "name": "description",
-        "label": "Description",
-        "valueType": "string",
-        "value": ""
-      },
-      {
-        "component": "text",
-        "name": "ctaLabel",
-        "label": "CTA Label",
-        "valueType": "string",
-        "value": ""
-      },
-      {
-        "component": "text",
-        "name": "ctaUrl",
-        "label": "CTA URL",
-        "valueType": "string",
-        "value": ""
-      }
-    ]
-  },
-  {
     "id": "product-teaser",
     "fields": [
       {
@@ -652,6 +854,40 @@
         "component": "richtext",
         "name": "content",
         "label": "Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "targeted-block",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "content",
+        "label": "Content"
+      },
+      {
+        "component": "text",
+        "name": "customerGroups",
+        "label": "Customer Groups",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "customerSegments",
+        "label": "Customer Segments",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "type",
+        "label": "Type",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "fragment",
+        "label": "Fragment",
         "valueType": "string"
       }
     ]

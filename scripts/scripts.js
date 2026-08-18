@@ -222,23 +222,34 @@ async function loadEager(doc) {
 
   const main = doc.querySelector('main');
   if (main) {
-    try {
-      await initializeCommerce();
+    const isExchange = document.body.classList.contains('bcg-exchange');
+    if (isExchange) {
       decorateMain(main);
-      applyTemplates(doc);
-      await loadCommerceEager();
-    } catch (e) {
-      console.error('Error initializing commerce configuration:', e);
-      loadErrorPage(418);
+    } else {
+      try {
+        await initializeCommerce();
+        decorateMain(main);
+        applyTemplates(doc);
+        await loadCommerceEager();
+      } catch (e) {
+        console.error('Error initializing commerce configuration:', e);
+        loadErrorPage(418);
+      }
     }
-    document.body.classList.add('appear');
-    await loadSection(main.querySelector('.section'), (section) => {
+    if (!isExchange) document.body.classList.add('appear');
+    const waitForSectionImage = (section) => {
       // === Quick Edit first-paint guard (Demo Builder) ===
       // The Experience Workspace canvas stalls the first paint if loadSection
       // blocks on waitForFirstImage in quick-edit mode; skip the wait there.
       if (document.body.classList.contains('quick-edit')) return Promise.resolve();
       return waitForFirstImage(section);
-    });
+    };
+    const firstSection = main.querySelector('.section');
+    await loadSection(firstSection, waitForSectionImage);
+    if (isExchange && firstSection.nextElementSibling) {
+      await loadSection(firstSection.nextElementSibling, waitForSectionImage);
+    }
+    if (isExchange) document.body.classList.add('appear');
   }
 
   try {
@@ -256,6 +267,7 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
+  const isExchange = document.body.classList.contains('bcg-exchange');
   // === Quick Edit Sidekick listener (Demo Builder) ===
   const loadQuickEdit = async (...args) => {
     // eslint-disable-next-line import/no-cycle
@@ -273,7 +285,7 @@ async function loadLazy(doc) {
       addQuickEditSidekickListeners(document.querySelector('aem-sidekick'));
     }, { once: true });
   }
-  loadHeader(doc.querySelector('header'));
+  if (!isExchange) loadHeader(doc.querySelector('header'));
 
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -282,9 +294,9 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadFooter(doc.querySelector('footer'));
+  if (!isExchange) loadFooter(doc.querySelector('footer'));
 
-  loadCommerceLazy();
+  if (!isExchange) loadCommerceLazy();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
