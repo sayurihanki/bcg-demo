@@ -237,16 +237,18 @@ async function loadEager(doc) {
       }
     }
     document.body.classList.add('appear');
-    const eagerSections = isExchange
-      ? [...main.querySelectorAll(':scope > .section')].slice(0, 2)
-      : [main.querySelector('.section')];
-    await Promise.all(eagerSections.map((section) => loadSection(section, (loadedSection) => {
+    const waitForSectionImage = (section) => {
       // === Quick Edit first-paint guard (Demo Builder) ===
       // The Experience Workspace canvas stalls the first paint if loadSection
       // blocks on waitForFirstImage in quick-edit mode; skip the wait there.
       if (document.body.classList.contains('quick-edit')) return Promise.resolve();
-      return waitForFirstImage(loadedSection);
-    })));
+      return waitForFirstImage(section);
+    };
+    const firstSection = main.querySelector('.section');
+    await loadSection(firstSection, waitForSectionImage);
+    if (isExchange && firstSection.nextElementSibling) {
+      await loadSection(firstSection.nextElementSibling, waitForSectionImage);
+    }
   }
 
   try {
