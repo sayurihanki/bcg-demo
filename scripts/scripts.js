@@ -236,7 +236,7 @@ async function loadEager(doc) {
         loadErrorPage(418);
       }
     }
-    document.body.classList.add('appear');
+    if (!isExchange) document.body.classList.add('appear');
     const waitForSectionImage = (section) => {
       // === Quick Edit first-paint guard (Demo Builder) ===
       // The Experience Workspace canvas stalls the first paint if loadSection
@@ -249,6 +249,7 @@ async function loadEager(doc) {
     if (isExchange && firstSection.nextElementSibling) {
       await loadSection(firstSection.nextElementSibling, waitForSectionImage);
     }
+    if (isExchange) document.body.classList.add('appear');
   }
 
   try {
