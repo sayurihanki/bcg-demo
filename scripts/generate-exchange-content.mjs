@@ -66,6 +66,34 @@ const homepage = documentHtml([
   section(metadata({ title: 'BCG Exchange | Intelligence You Can Act On', description: 'Discover BCG intelligence, expert-led programs, and BCG X products configured for enterprise impact.' })),
 ]);
 
+const checkoutSections = [
+  section(block('exchange-header', [
+    row('<strong>BCG Exchange</strong>', '<a href="/?cart=1">Back to portfolio</a>'),
+  ])),
+  section(block('exchange-checkout', [
+    row('<strong>Enterprise checkout</strong>'),
+  ])),
+  section(block('exchange-footer', [
+    row('<strong>BCG Exchange</strong>', '<p>Secure enterprise request · No payment taken</p>', '<a href="/">Back to Exchange</a>'),
+  ])),
+  section(metadata({ title: 'Checkout | BCG Exchange', description: 'Complete a secure commercial or procurement request for your selected BCG portfolio.' })),
+];
+const checkout = documentHtml(checkoutSections);
+
+const cartSections = [
+  section(block('exchange-header', [
+    row('<strong>BCG Exchange</strong>', '<a href="/">Back to Exchange</a>'),
+  ])),
+  section(block('exchange-cart', [
+    row('<strong>Proposal workspace</strong>'),
+  ])),
+  section(block('exchange-footer', [
+    row('<strong>BCG Exchange</strong>', '<p>Enterprise portfolio builder · For demonstration</p>', '<a href="/">Back to Exchange</a>'),
+  ])),
+  section(metadata({ title: 'Your Portfolio | BCG Exchange', description: 'Review and configure your selected BCG portfolio before starting a secure enterprise request.' })),
+];
+const cart = documentHtml(cartSections);
+
 async function save(relativePath, html) {
   const file = resolve(root, relativePath);
   await mkdir(dirname(file), { recursive: true });
@@ -73,6 +101,11 @@ async function save(relativePath, html) {
 }
 
 await save('index.html', homepage);
+await save('cart.html', cart);
+await save('checkout.html', checkout);
+await mkdir(resolve('drafts'), { recursive: true });
+await writeFile(resolve('drafts/cart.plain.html'), `${cartSections.join('\n')}\n`);
+await writeFile(resolve('drafts/checkout.plain.html'), `${checkoutSections.join('\n')}\n`);
 await Promise.all(bcgSolutions.map(async (solution) => {
   const detailRows = [
     row(`<strong>${solution.slug}</strong>`, `<p>${escape(solution.category)} · BCG X product</p><h1>${escape(solution.shortName)}</h1>`, `<p>${escape(solution.description)}</p>`, `<a href="${solution.url}">View on BCG.com</a>`),
@@ -93,4 +126,4 @@ await Promise.all(bcgSolutions.map(async (solution) => {
 }));
 
 // eslint-disable-next-line no-console
-console.log(`Generated 9 DA fixtures in ${root}`);
+console.log(`Generated 11 DA fixtures in ${root}`);

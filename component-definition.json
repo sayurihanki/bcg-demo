@@ -512,6 +512,40 @@
           }
         },
         {
+          "title": "Exchange Cart",
+          "id": "exchange-cart",
+          "model": "exchange-cart",
+          "plugins": {
+            "da": {
+              "rows": 1,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "label",
+                  "selector": "div:nth-child(1)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Exchange Checkout",
+          "id": "exchange-checkout",
+          "model": "exchange-checkout",
+          "plugins": {
+            "da": {
+              "rows": 1,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "label",
+                  "selector": "div:nth-child(1)"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Targeted Block",
           "id": "targeted-block",
           "model": "targeted-block",
