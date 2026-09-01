@@ -11,6 +11,8 @@ const sourceRoot = '/Users/hanki/Documents/Codex/2026-08-17/sites-plugin-sites-o
 const mediaSource = `${sourceRoot}/public/og-products.png`;
 const documents = [
   ['index.html', 'index.html', ''],
+  ['cart.html', 'cart.html', 'cart'],
+  ['checkout.html', 'checkout.html', 'checkout'],
   ['products/marketplace-accelerator.html', 'products/marketplace-accelerator.html', 'products/marketplace-accelerator'],
   ['products/data-intelligence-ai.html', 'products/data-intelligence-ai.html', 'products/data-intelligence-ai'],
   ['products/deep-customer-engagement-ai.html', 'products/deep-customer-engagement-ai.html', 'products/deep-customer-engagement-ai'],

@@ -1,4 +1,9 @@
 export default function decorate(block) {
+  const pageName = window.location.pathname.split('/').filter(Boolean).at(-1);
+  if (pageName === 'checkout' || pageName === 'cart') {
+    block.innerHTML = '<footer class="pdp-footer"><a class="brand" href="/"><span class="brand-mark">BCG</span><span class="brand-divider"></span><span class="brand-name">Exchange</span></a><span>Secure enterprise request · No payment taken</span><a href="/">Back to Exchange \u2191</a></footer>';
+    return;
+  }
   if (window.location.pathname.startsWith('/products/')) {
     block.innerHTML = '<footer class="pdp-footer"><a class="brand" href="/"><span class="brand-mark">BCG</span><span class="brand-divider"></span><span class="brand-name">Exchange</span></a><span>BCG X product commerce concept · For demonstration</span><a href="/#bcg-products">Back to all products ↑</a></footer>';
     return;

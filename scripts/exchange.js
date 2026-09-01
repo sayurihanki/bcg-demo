@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'bcg-exchange-cart';
-const STORAGE_VERSION = 2;
+const STORAGE_VERSION = 3;
 const CHANGE_EVENT = 'bcg-exchange:workspace-change';
 
 let state = { version: STORAGE_VERSION, items: [], procurementMode: true };
@@ -62,6 +62,11 @@ export function getWorkspace() {
   return { ...state, items: state.items.map((item) => ({ ...item })) };
 }
 
+export function getExchangePath(pathname) {
+  const localHosts = ['localhost', '127.0.0.1', '[::1]'];
+  return localHosts.includes(window.location.hostname) ? `/drafts${pathname}` : pathname;
+}
+
 export function addWorkspaceItem(item) {
   hydrateWorkspace();
   const normalized = normalizeItem(item);
@@ -86,6 +91,21 @@ export function setProcurementMode(enabled) {
   state.procurementMode = Boolean(enabled);
   persist();
   emit();
+}
+
+export function submitWorkspaceRequest() {
+  hydrateWorkspace();
+  const date = new Date().toISOString().slice(0, 10).replaceAll('-', '');
+  const suffix = window.crypto?.randomUUID?.().slice(0, 6).toUpperCase()
+    || Math.random().toString(36).slice(2, 8).toUpperCase();
+  const reference = `BCGX-${date}-${suffix}`;
+  const message = state.procurementMode
+    ? 'Procurement request prepared'
+    : 'Commercial proposal prepared';
+  state = { version: STORAGE_VERSION, items: [], procurementMode: state.procurementMode };
+  persist();
+  emit(message);
+  return reference;
 }
 
 export function onWorkspaceChange(callback) {

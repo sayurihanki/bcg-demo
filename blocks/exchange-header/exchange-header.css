@@ -2568,9 +2568,10 @@ footer {
   animation: askIn 260ms ease;
   background: #10251c;
   color: white;
-  max-width: 760px;
+  max-height: calc(100vh - 40px);
+  max-width: 920px;
   min-height: 570px;
-  overflow: hidden;
+  overflow: hidden auto;
   padding: 55px clamp(25px, 5vw, 70px);
   position: relative;
   width: 100%;
@@ -2699,6 +2700,157 @@ footer {
   cursor: pointer;
   font-size: 8px;
   padding: 7px 9px;
+}
+
+.prompt-options button:hover,
+.prompt-options button:focus-visible {
+  border-color: var(--lime);
+  color: white;
+}
+
+.intent-results {
+  margin-top: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.intent-results:empty {
+  display: none;
+}
+
+.intent-signals {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.intent-signals span,
+.intent-signals b {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 7px;
+  letter-spacing: 0.08em;
+}
+
+.intent-signals span {
+  color: rgb(255 255 255 / 40%);
+  margin-right: 4px;
+}
+
+.intent-signals b {
+  background: rgb(198 243 99 / 10%);
+  border: 1px solid rgb(198 243 99 / 28%);
+  color: var(--lime);
+  font-weight: 500;
+  padding: 5px 7px;
+}
+
+.intent-result-head {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+}
+
+.intent-result-head strong {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.intent-result-head span {
+  color: rgb(255 255 255 / 40%);
+  font-size: 8px;
+}
+
+.ask-panel a.intent-result {
+  align-items: center;
+  border-top: 1px solid rgb(255 255 255 / 15%);
+  color: white;
+  display: grid;
+  font: inherit;
+  gap: 15px;
+  grid-template-columns: 28px minmax(0, 1fr) 145px;
+  letter-spacing: normal;
+  padding: 14px 2px;
+  text-decoration: none;
+  transition: background-color 180ms ease, padding 180ms ease;
+}
+
+.intent-result:last-child {
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+.ask-panel a.intent-result:hover,
+.ask-panel a.intent-result:focus-visible {
+  background: rgb(255 255 255 / 5%);
+  color: white;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+.intent-result-index {
+  color: var(--lime);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+}
+
+.intent-result-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.intent-result-copy small {
+  color: var(--lime);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.intent-result-copy strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.intent-result-copy > span {
+  color: rgb(255 255 255 / 58%);
+  font-size: 10px;
+  line-height: 1.45;
+  margin-top: 3px;
+}
+
+.intent-result-copy em {
+  color: rgb(255 255 255 / 38%);
+  font-size: 8px;
+  font-style: normal;
+  margin-top: 5px;
+}
+
+.intent-result-action {
+  align-items: center;
+  color: white;
+  display: flex;
+  font-size: 9px;
+  gap: 8px;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.intent-result-action b {
+  align-items: center;
+  background: var(--lime);
+  border-radius: 50%;
+  color: var(--ink);
+  display: flex;
+  flex: 0 0 28px;
+  height: 28px;
+  justify-content: center;
 }
 
 .answer-note {
@@ -3905,6 +4057,27 @@ input:focus-visible {
   .prompt-options {
     align-items: start;
     flex-direction: column;
+  }
+
+  .ask-panel {
+    min-height: 0;
+    padding: 42px 20px 30px;
+  }
+
+  .ask-icon {
+    margin-bottom: 24px;
+  }
+
+  .ask-panel a.intent-result {
+    align-items: start;
+    gap: 10px;
+    grid-template-columns: 22px minmax(0, 1fr);
+  }
+
+  .intent-result-action {
+    grid-column: 2;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .footer-brand {

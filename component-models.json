@@ -642,6 +642,28 @@
     ]
   },
   {
+    "id": "exchange-cart",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "label",
+        "label": "Cart label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "exchange-checkout",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "label",
+        "label": "Checkout label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
